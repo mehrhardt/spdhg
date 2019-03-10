@@ -8,9 +8,7 @@ where <img src="http://latex.codecogs.com/gif.latex?f_i" border="0"/> and <img s
 
 SPDHG is a direct generalization of the popular Primal-Dual Hybrid Gradient algorithm (PDHG) also known as the Chambolle-Pock algorithm [2, 3].
 
-[1] Chambolle, A., Ehrhardt, M. J., Richtárik, P., & Schönlieb, C.-B. (2017).
-Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications.
-Submitted to SIAM Journal on Optimization. http://arxiv.org/abs/1706.04957
+[1] Chambolle, A., Ehrhardt, M. J., Richtárik, P., & Schönlieb, C.-B. (2018). Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications. SIAM Journal on Optimization, 28(4), 2783–2808. https://doi.org/10.1007/s10851-010-0251-1 http://arxiv.org/abs/1706.04957
 
 ## Getting started
 
@@ -86,13 +84,11 @@ git clone https://github.com/mehrhardt/spdhg path/to/spdhgfolder
 
 ## Further usage
 
-SPDHG has been used to reconctruct real clinical PET data from the Siemens Biograph mMR in span 1 in [5].
+SPDHG has been used to reconstruct real clinical PET data from the Siemens Biograph mMR in span 1 in [5, 6].
 
 ## References
 
-[1] Chambolle, A., Ehrhardt, M. J., Richtárik, P., & Schönlieb, C.-B. (2017).
-Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications.
-Submitted to SIAM Journal on Optimization. http://arxiv.org/abs/1706.04957
+[1] Chambolle, A., Ehrhardt, M. J., Richtárik, P., & Schönlieb, C.-B. (2018). Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications. SIAM Journal on Optimization, 28(4), 2783–2808. https://doi.org/10.1007/s10851-010-0251-1 http://arxiv.org/abs/1706.04957
 
 [2] Chambolle, A., & Pock, T. (2011). A First-Order Primal-Dual Algorithm for Convex Problems with Applications to Imaging. Journal of Mathematical Imaging and Vision, 40(1), 120–145. http://doi.org/10.1007/s10851-010-0251-1
 
@@ -102,3 +98,4 @@ Submitted to SIAM Journal on Optimization. http://arxiv.org/abs/1706.04957
 
 [5] Ehrhardt, M. J., Markiewicz, P. J., Richtárik, P., Schott, J., Chambolle, A., & Schönlieb, C.-B. (2017). Faster PET Reconstruction with a Stochastic Primal-Dual Hybrid Gradient Method. In Proceedings of SPIE (Vol. 10394, pp. 1–12). San Diego. http://doi.org/10.1117/12.2272946
 
+[6] Ehrhardt, M. J., Markiewicz, P., & Schönlieb, C.-B. (2018). Faster PET Reconstruction with Non-Smooth Priors by Randomization and Preconditioning. Arxiv. Retrieved from http://arxiv.org/abs/1808.07150
