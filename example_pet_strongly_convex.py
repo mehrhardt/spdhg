@@ -114,7 +114,7 @@ if not os.path.exists(file_data):
                  bbox_inches='tight')
 
 else:
-    (data, factors, background) = np.load(file_data)
+    (data, factors, background) = np.load(file_data, allow_pickle=True)
 
 # data fit
 f = odl.solvers.SeparableSum(
@@ -174,7 +174,8 @@ if not os.path.exists(file_target):
     obj_opt = obj_fun(x_opt)
 
     # save saddle point
-    np.save(file_target, (x_opt, y_opt, subx_opt, suby_opt, obj_opt))
+    np.save(file_target, (x_opt, y_opt, subx_opt, suby_opt, obj_opt), 
+            allow_pickle=True)
 
     # show saddle point and subgradients
     misc.save_image(x_opt, 'x_saddle', folder_main, 1, clim=clim)
@@ -183,7 +184,8 @@ if not os.path.exists(file_target):
     misc.save_signal(suby_opt[0], 'suby_saddle[0]', folder_main, 4)
 
 else:
-    (x_opt, y_opt, subx_opt, suby_opt, obj_opt) = np.load(file_target)
+    (x_opt, y_opt, subx_opt, suby_opt, obj_opt) = np.load(file_target, 
+            allow_pickle=True)
 
 # set distances
 dist_x = 1 / 2 * odl.solvers.L2NormSquared(X).translated(x_opt)
@@ -208,7 +210,7 @@ class CallbackStore(odl.solvers.Callback):
             dy = dist_y(x[1])
             d = dx + dy
 
-            self.out.append({'obj': obj, 'iter': self.iter, 'dist': d,
+            self.out.append({'obj': obj, 'dist': d,
                              'dist_x': dx, 'dist_y': dy})
 
         if self.iter in self.iter_plot:
@@ -315,7 +317,8 @@ for alg in ['pdhg', 'spdhg_uni10', 'spdhg_uni50', 'pesquet_uni10',
         assert False, "Algorithm not defined"
 
     np.save('{}/{}_output'.format(folder_npy, alg), (iter_save[alg],
-            niter[alg], x, callback.callbacks[1].out, nsub[alg], theta))
+            niter[alg], x, callback.callbacks[1].out, nsub[alg], theta), 
+            allow_pickle=True)
 
 # %% --- Analyse and visualise the output ---
 algs = ['pdhg', 'spdhg_uni10', 'spdhg_uni50', 'pesquet_uni10', 'pesquet_uni50']
@@ -323,7 +326,8 @@ algs = ['pdhg', 'spdhg_uni10', 'spdhg_uni50', 'pesquet_uni10', 'pesquet_uni50']
 iter_save_v, niter_v, image_v, out_v, nsub_v, theta_v = {}, {}, {}, {}, {}, {}
 for a in algs:
     (iter_save_v[a], niter_v[a], image_v[a], out_v[a], nsub_v[a],
-     theta_v[a]) = np.load('{}/{}_output.npy'.format(folder_npy, a))
+     theta_v[a]) = np.load('{}/{}_output.npy'.format(folder_npy, a), 
+            allow_pickle=True)
 
 epochs_save = {a: np.array(iter_save_v[a]) / np.float(nsub_v[a]) for a in algs}
 

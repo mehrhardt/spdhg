@@ -21,8 +21,8 @@ and Imaging Applications*. ArXiv: http://arxiv.org/abs/1706.04957 (2017).
 
 from __future__ import division, print_function
 import os
-import matplotlib.pyplot as plt
 import matplotlib
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.ndimage.filters import gaussian_filter
 import brewer2mpl
@@ -112,7 +112,7 @@ if not os.path.exists(file_data):
                  bbox_inches='tight')
 
 else:
-    (data, factors, background) = np.load(file_data)
+    (data, factors, background) = np.load(file_data, allow_pickle=True)
 
 # data fit
 f = odl.solvers.SeparableSum(
@@ -166,10 +166,12 @@ if not os.path.exists(file_target):
     obj_opt = obj_fun(x_opt)  # objective value at the saddle point
 
     # save saddle point
-    np.save(file_target, (x_opt, y_opt, subx_opt, suby_opt, obj_opt))
+    np.save(file_target, (x_opt, y_opt, subx_opt, suby_opt, obj_opt), 
+            allow_pickle=True)
 
 else:
-    (x_opt, y_opt, subx_opt, suby_opt, obj_opt) = np.load(file_target)
+    (x_opt, y_opt, subx_opt, suby_opt, obj_opt) = np.load(file_target, 
+            allow_pickle=True)
 
 dist_x = odl.solvers.L2NormSquared(X).translated(x_opt)  # primal distance
 dist_y = odl.solvers.L2NormSquared(Y).translated(y_opt)  # dual distance
@@ -219,7 +221,7 @@ class CallbackStore(odl.solvers.Callback):
                              'breg_ex': breg_ex, 'breg_ey': breg_ey,
                              'dist': dist, 'dist_x': dx, 'dist_y': dy,
                              'dist_erg': dist_erg, 'dist_ex': dex,
-                             'dist_ey': dey, 'iter': self.iter})
+                             'dist_ey': dey})
 
         if self.iter in self.iter_plot:
             fname = '{}_{}'.format(self.alg, self.iter)
@@ -315,7 +317,8 @@ for alg in ['pdhg', 'pesquet10', 'pesquet50', 'spdhg10', 'spdhg50']:
         assert False, "Algorithm not defined"
 
     np.save('{}/{}_output'.format(folder_npy, alg), (iter_save[alg],
-            niter[alg], x, callback.callbacks[1].out, nsub[alg]))
+            niter[alg], x, callback.callbacks[1].out, nsub[alg]), 
+            allow_pickle=True)
 
 # %% --- Analyse and visualise the output ---
 algs = ['pdhg', 'pesquet10', 'pesquet50', 'spdhg10', 'spdhg50']
@@ -323,7 +326,7 @@ algs = ['pdhg', 'pesquet10', 'pesquet50', 'spdhg10', 'spdhg50']
 iter_save_v, niter_v, image_v, out_v, nsub_v = {}, {}, {}, {}, {}
 for a in algs:
     (iter_save_v[a], niter_v[a], image_v[a], out_v[a], nsub_v[a]) = np.load(
-     '{}/{}_output.npy'.format(folder_npy, a))
+     '{}/{}_output.npy'.format(folder_npy, a), allow_pickle=True)
 
 epochs_save = {a: np.array(iter_save_v[a]) / np.float(nsub_v[a]) for a in algs}
 

@@ -20,8 +20,8 @@ and Imaging Applications*. ArXiv: http://arxiv.org/abs/1706.04957 (2017).
 from __future__ import division, print_function
 import os
 import brewer2mpl
-import matplotlib.pyplot as plt
 import matplotlib
+import matplotlib.pyplot as plt
 import numpy as np
 import odl
 import odl.contrib.datasets.images as images
@@ -37,7 +37,6 @@ niter_target = 2000
 subfolder = '{}epochs'.format(nepoch)
 simage = [408, 544]
 image_raw = images.rings(shape=simage, gray=True)  # load image
-
 filename = '{}_{}x{}'.format(filename, simage[0], simage[1])
 
 folder_main = '{}/{}'.format(folder_out, filename)
@@ -123,7 +122,8 @@ if not os.path.exists(file_target):
     obj_opt = obj_fun(x_opt)  # compute objective at saddle
 
     # save saddle point
-    np.save(file_target, (x_opt, y_opt, subx_opt, suby_opt, obj_opt, normA))
+    np.save(file_target, (x_opt, y_opt, subx_opt, suby_opt, obj_opt, normA), 
+            allow_pickle=True)
 
     # show saddle point and subgradients
     misc.save_image(x_opt, 'x_saddle', folder_main, 1, clim=clim)
@@ -136,7 +136,8 @@ if not os.path.exists(file_target):
     misc.save_image(suby_opt[2], 'suby_saddle[2]', folder_main, 8)
 
 else:
-    (x_opt, y_opt, subx_opt, suby_opt, obj_opt, normA) = np.load(file_target)
+    (x_opt, y_opt, subx_opt, suby_opt, obj_opt, normA) = np.load(file_target, 
+            allow_pickle=True)
 
 # set norms of the primal and dual variable
 dist_x = odl.solvers.L2NormSquared(X).translated(x_opt)
@@ -164,8 +165,8 @@ class CallbackStore(odl.solvers.Callback):
             dist = dx + dy
 
             self.out.append({'obj': obj, 'dist': dist, 'dist_x': dx,
-                             'dist_y': dy, 'psnr': psnr, 'psnr_opt': psnr_opt,
-                             'iter': self.iter})
+                             'dist_y': dy, 'psnr': psnr, 
+                             'psnr_opt': psnr_opt})
 
         if self.iter in self.iter_plot:
             fname = '{}_{}'.format(self.alg, self.iter)
@@ -190,8 +191,6 @@ for alg in ['pdhg', 'da_pdhg', 'da_spdhg_uni3']:
 
     # clear variables in order not to use previous instances
     prob_subset, prob, sigma, sigma_tilde, tau, theta = [None] * 6
-
-    np.random.seed(1807)  # set random seed so results are reproducable
 
     # create lists for subset division
     n = nsub[alg]
@@ -225,6 +224,9 @@ for alg in ['pdhg', 'da_pdhg', 'da_spdhg_uni3']:
         else:
             normA = np.load(file_normA)
 
+    # set random seed so that results are reproducable
+    np.random.seed(1807)
+    
     # choose parameters for algorithm
     if alg == 'pdhg':
         prob_subset = [1] * n
@@ -274,7 +276,8 @@ for alg in ['pdhg', 'da_pdhg', 'da_spdhg_uni3']:
         assert False, "Algorithm not defined"
 
     np.save('{}/{}_output'.format(folder_npy, alg), (iter_save[alg],
-            niter[alg], x, callback.callbacks[1].out, nsub[alg]))
+            niter[alg], x, callback.callbacks[1].out, nsub[alg]), 
+            allow_pickle=True)
 
 # %% --- Analyse and visualise the output ---
 algs = ['pdhg', 'da_pdhg', 'da_spdhg_uni3']
@@ -282,7 +285,8 @@ algs = ['pdhg', 'da_pdhg', 'da_spdhg_uni3']
 (iter_save_v, niter_v, image_v, out_v, nsub_v) = {}, {}, {}, {}, {}
 for a in algs:
     (iter_save_v[a], niter_v[a], image_v[a], out_v[a], nsub_v[a]) = np.load(
-        '{}/{}_output.npy'.format(folder_npy, a))
+        '{}/{}_output.npy'.format(folder_npy, a), 
+        allow_pickle=True)
 
 epochs_save = {a: np.array(iter_save_v[a]) / np.float(nsub_v[a]) for a in algs}
 
