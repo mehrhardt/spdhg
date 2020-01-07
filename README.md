@@ -8,7 +8,7 @@ where <img src="http://latex.codecogs.com/gif.latex?f_i" border="0"/> and <img s
 
 SPDHG is a direct generalization of the popular Primal-Dual Hybrid Gradient algorithm (PDHG) also known as the Chambolle-Pock algorithm [2, 3].
 
-[1] Chambolle, A., Ehrhardt, M. J., Richtárik, P., & Schönlieb, C.-B. (2018). Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications. SIAM Journal on Optimization, 28(4), 2783–2808. https://doi.org/10.1007/s10851-010-0251-1 http://arxiv.org/abs/1706.04957
+[1] Chambolle, Ehrhardt, Richtárik & Schönlieb (2018). [Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications](https://epubs.siam.org/doi/abs/10.1137/17M1134834). SIAM Journal on Optimization, 28(4), 2783–2808.
 
 ## Getting started
 
@@ -89,14 +89,14 @@ SPDHG has been used to reconstruct real clinical PET data from the Siemens Biogr
 
 ## References
 
-[1] Chambolle, A., Ehrhardt, M. J., Richtárik, P., & Schönlieb, C.-B. (2018). Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications. SIAM Journal on Optimization, 28(4), 2783–2808. https://doi.org/10.1007/s10851-010-0251-1 http://arxiv.org/abs/1706.04957
+[1] Chambolle, Ehrhardt, Richtárik & Schönlieb (2018). [Stochastic Primal-Dual Hybrid Gradient Algorithm with Arbitrary Sampling and Imaging Applications](https://epubs.siam.org/doi/abs/10.1137/17M1134834). SIAM Journal on Optimization, 28(4), 2783–2808.
 
-[2] Chambolle, A., & Pock, T. (2011). A First-Order Primal-Dual Algorithm for Convex Problems with Applications to Imaging. Journal of Mathematical Imaging and Vision, 40(1), 120–145. http://doi.org/10.1007/s10851-010-0251-1
+[2] Chambolle & Pock (2011). [A First-Order Primal-Dual Algorithm for Convex Problems with Applications to Imaging](https://doi.org/10.1007/s10851-010-0251-1). Journal of Mathematical Imaging and Vision, 40(1), 120–145.
 
-[3] Pock, T., & Chambolle, A. (2011). Diagonal preconditioning for first order primal-dual algorithms in convex optimization. Proceedings of the IEEE International Conference on Computer Vision, 1762–1769. http://doi.org/10.1109/ICCV.2011.6126441
+[3] Pock & Chambolle (2011). [Diagonal preconditioning for first order primal-dual algorithms in convex optimization](https://doi.org/10.1007/s10851-010-0251-1). Proceedings of the IEEE International Conference on Computer Vision, 1762–1769.
 
-[4] Pesquet, J.-C., & Repetti, A. (2015). A Class of Randomized Primal-Dual Algorithms for Distributed Optimization. Retrieved from http://arxiv.org/abs/1406.6404
+[4] Pesquet & Repetti (2015). [A Class of Randomized Primal-Dual Algorithms for Distributed Optimization](http://arxiv.org/abs/1406.6404).
 
-[5] Ehrhardt, M. J., Markiewicz, P. J., Richtárik, P., Schott, J., Chambolle, A., & Schönlieb, C.-B. (2017). Faster PET Reconstruction with a Stochastic Primal-Dual Hybrid Gradient Method. In Proceedings of SPIE (Vol. 10394, pp. 1–12). San Diego. http://doi.org/10.1117/12.2272946
+[5] Ehrhardt, Markiewicz, Richtárik, Schott, Chambolle & Schönlieb (2017). [Faster PET Reconstruction with a Stochastic Primal-Dual Hybrid Gradient Method](http://doi.org/10.1117/12.2272946). In Proceedings of SPIE (Vol. 10394, pp. 1–12). San Diego.
 
-[6] Ehrhardt, M. J., Markiewicz, P., & Schönlieb, C.-B. (2018). Faster PET Reconstruction with Non-Smooth Priors by Randomization and Preconditioning. Arxiv. Retrieved from http://arxiv.org/abs/1808.07150
+[6] Ehrhardt, Markiewicz & Schönlieb (2018). [Faster PET Reconstruction with Non-Smooth Priors by Randomization and Preconditioning](https://iopscience.iop.org/article/10.1088/1361-6560/ab3d07). Physics in Medicine & Biology 64(22), 225019.
