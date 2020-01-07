@@ -35,7 +35,17 @@ The same can be observed visually. Both images are obtained with the same number
 <img src="https://github.com/mehrhardt/spdhg/blob/master/spdhg50_250.png" width="20%" border="0"/></p>
 
 ## Installation
-### I) Installation of dependencies
+
+### I) Get SPDHG
+
+1) Clone the SPDHG repository.
+```
+git clone https://github.com/mehrhardt/spdhg path/to/spdhgfolder
+```
+
+2) Either add `path/to/spdhgfolder` to the Python PATH or execute the scripts from `path/to/spdhgfolder`.
+
+### II) Installation of dependencies
 
 1) On linux based systems all dependencies can be easily installed via [conda](https://conda.io/docs/). The following code creates a new environment `env_spdhg` with the necessary dependencies.
 
@@ -56,7 +66,7 @@ conda list --explicit > package-list.txt
 source activate env_spdhg
 ```
 
-### II) Installation of (recent) ODL
+### III) Installation of (recent) ODL
 
 1) Clone the ODL repository. 
 ```
@@ -72,15 +82,6 @@ pip install -e .
 ```
 
 Most of this code will also work with other versions of ODL, e.g. version 0.6.0 which is the most recent version in conda as of July 2018. However, this version does not contain the test images used in this code.
-
-### III) Get SPDHG
-
-1) Clone the SPDHG repository.
-```
-git clone https://github.com/mehrhardt/spdhg path/to/spdhgfolder
-```
-
-2) Either add `path/to/spdhgfolder` to the Python PATH or execute the scripts from `path/to/spdhgfolder`.
 
 ## Further usage
 
